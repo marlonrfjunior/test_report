@@ -1,0 +1,715 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test Report</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+            .sidebar {
+                height: 100%;
+                width: 300px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #f8f9fa;
+                padding: 20px;
+                overflow-x: hidden;
+                border-right: 1px solid #ddd;
+            }
+            .sidebar ul.nav {
+                list-style-type: none;
+                padding-left: 0;
+            }
+            .sidebar ul.nav li {
+                margin-bottom: 10px;
+            }
+            .sidebar ul.nav li a {
+                display: block;
+                padding: 10px 15px;
+                color: #333;
+                text-decoration: none;
+                transition: background-color 0.3s;
+            }
+            .sidebar ul.nav li a:hover {
+                background-color: #ddd;
+            }
+            .content {
+                margin-left: 320px;
+                padding: 20px;
+            }
+            .chart-container {
+                width: 100%;
+                height: 300px;
+                margin: 20px 0;
+            }
+        </style>
+    </head>
+    <body>
+        
+    <div class="sidebar">
+
+        <div class="mt-4">
+            <h5 class = "font-weight-bold">Test summary</h5>
+            <canvas id="resumoTestesChart"></canvas>
+        </div>
+        <div class="mt-4">
+            <h5 class = "font-weight-bold">Execution Time </h5>
+            <p>00:00.000 (mm:ss:ms)</p>
+            <canvas id="tempoExecucaoChart"></canvas>
+        </div>
+    </div>
+    <script>
+        var ctxResumoTestes = document.getElementById('resumoTestesChart').getContext('2d');
+        var resumoTestesChart = new Chart(ctxResumoTestes, {
+            type: 'doughnut',
+            data: {
+                labels: ["Successful Tests", "Failed tests"],
+                datasets: [{
+                    label: 'Test summary',
+                    data: [5, 1],
+                    backgroundColor: ["#28a745", "#dc3545"],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return ' ' + tooltipItem.label + ': ' + tooltipItem.raw.toFixed(1);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        var ctxTempoExecucao = document.getElementById('tempoExecucaoChart').getContext('2d');
+        var tempoExecucaoChart = new Chart(ctxTempoExecucao, {
+            type: 'bar',
+            data: {
+                labels: ["First scenario", "Second scenario", "Third scenario"],
+                datasets: [{
+                    label: 'Execution Time by Scenario(s)',
+                    data: [3.0994415283203125e-06, 2.1457672119140625e-06, 1.8358230590820312e-05],
+                    backgroundColor: ["#007bff", "#6610f2", "#6f42c1", "#17a2b8", "#28a745"],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return ' ' + tooltipItem.label + ': ' + tooltipItem.raw.toFixed(1) + 's';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    
+        <div class="content">
+            <h1 class="mt-4 mb-4">Test Report</h1>
+            <div id="cenarios">
+                
+            <div class="card mb-4">
+                <div class="card-header" data-toggle="collapse" data-target="#cenario_68679583-a1aa-4f0b-a1d0-f55139d9a3ae">
+                    <div class="row">
+                        <div class="col-8">
+                            <h5 class="mb-0">
+                                <i class="fas fa-caret-right mr-2"></i> 
+                                <i class="text-success fas fa-check-circle"></i>
+                                First scenario
+                            </h5>
+                        </div>
+                        <div class="col-4">
+                            <h6 class="mb-0 d-flex justify-content-end align-items-center">
+                                00:00.000
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div id="cenario_68679583-a1aa-4f0b-a1d0-f55139d9a3ae" class="collapse">
+                    <div class="card-body">
+        
+        <div class="card mb-3">
+            <div class="card-header" data-toggle="collapse" data-target="#test_case_47e34827-e303-4b79-9631-739cfc33a46a">
+                <div class="row">
+                    <div class="col-8">
+                        <h6 class="mb-0 d-flex justify-content-start align-items-center">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            <span class="ml-2">First test case</span>
+                        </h6>
+                    </div>
+                    <div class="col-4">
+                        <h6 class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div id="test_case_47e34827-e303-4b79-9631-739cfc33a46a" class="collapse">
+                <div class="card-body">
+    
+        <div class="card mb-2">
+            <div class="card-header" data-toggle="collapse" data-target="#step_0a5e8d76-2273-4a37-967e-5d8f04f42c38">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            First step
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="step_0a5e8d76-2273-4a37-967e-5d8f04f42c38" class="collapse">
+                <div class="card-body">
+                        <h6 class="mb-0 d-flex align-items-center">
+                            This is the first step in the test case.
+                        </h6>
+                    
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-2">
+            <div class="card-header" data-toggle="collapse" data-target="#step_82e02dde-6995-46bb-85a2-68bf5ff863aa">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            Second step
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="step_82e02dde-6995-46bb-85a2-68bf5ff863aa" class="collapse">
+                <div class="card-body">
+                        <h6 class="mb-0 d-flex align-items-center">
+                            This is the second step in the test case.
+                        </h6>
+                    
+                </div>
+            </div>
+        </div>
+    
+                </div>
+            </div>
+        </div>
+    
+                    </div>
+                </div>
+            </div>
+        
+            <div class="card mb-4">
+                <div class="card-header" data-toggle="collapse" data-target="#cenario_f8bcdc51-9b9b-496c-bb7c-30b547114ca6">
+                    <div class="row">
+                        <div class="col-8">
+                            <h5 class="mb-0">
+                                <i class="fas fa-caret-right mr-2"></i> 
+                                <i class="text-success fas fa-check-circle"></i>
+                                Second scenario
+                            </h5>
+                        </div>
+                        <div class="col-4">
+                            <h6 class="mb-0 d-flex justify-content-end align-items-center">
+                                00:00.000
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div id="cenario_f8bcdc51-9b9b-496c-bb7c-30b547114ca6" class="collapse">
+                    <div class="card-body">
+        
+        <div class="card mb-3">
+            <div class="card-header" data-toggle="collapse" data-target="#test_case_8d586206-c314-4bf6-9918-7a8710d0a8de">
+                <div class="row">
+                    <div class="col-8">
+                        <h6 class="mb-0 d-flex justify-content-start align-items-center">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            <span class="ml-2">First test case</span>
+                        </h6>
+                    </div>
+                    <div class="col-4">
+                        <h6 class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div id="test_case_8d586206-c314-4bf6-9918-7a8710d0a8de" class="collapse">
+                <div class="card-body">
+    
+        <div class="card mb-2">
+            <div class="card-header" data-toggle="collapse" data-target="#step_a9c675e8-c3ee-4212-936a-cddb29dbf66e">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            First step
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="step_a9c675e8-c3ee-4212-936a-cddb29dbf66e" class="collapse">
+                <div class="card-body">
+                        <h6 class="mb-0 d-flex align-items-center">
+                            This is the first step in the test case.
+                        </h6>
+                    
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-2">
+            <div class="card-header" data-toggle="collapse" data-target="#step_a4e51437-27e5-470d-8474-ba2ab46bf683">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            Second step
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="step_a4e51437-27e5-470d-8474-ba2ab46bf683" class="collapse">
+                <div class="card-body">
+                        <h6 class="mb-0 d-flex align-items-center">
+                            This is the second step in the test case.
+                        </h6>
+                    
+                </div>
+            </div>
+        </div>
+    
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-3">
+            <div class="card-header" data-toggle="collapse" data-target="#test_case_de716c8c-56e5-42f2-8cbb-d69956f269d1">
+                <div class="row">
+                    <div class="col-8">
+                        <h6 class="mb-0 d-flex justify-content-start align-items-center">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            <span class="ml-2">Second test case</span>
+                        </h6>
+                    </div>
+                    <div class="col-4">
+                        <h6 class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div id="test_case_de716c8c-56e5-42f2-8cbb-d69956f269d1" class="collapse">
+                <div class="card-body">
+    
+        <div class="card mb-2">
+            <div class="card-header" data-toggle="collapse" data-target="#step_c0005223-8e31-4fff-abba-b23108a2a63b">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            First step
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="step_c0005223-8e31-4fff-abba-b23108a2a63b" class="collapse">
+                <div class="card-body">
+                        <h6 class="mb-0 d-flex align-items-center">
+                            This is the first step in the test case.
+                        </h6>
+                    
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-2">
+            <div class="card-header" data-toggle="collapse" data-target="#step_02552565-7cf8-4524-bff5-8060ac80869d">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            Second step
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="step_02552565-7cf8-4524-bff5-8060ac80869d" class="collapse">
+                <div class="card-body">
+                        <h6 class="mb-0 d-flex align-items-center">
+                            This is the second step in the test case.
+                        </h6>
+                    
+                </div>
+            </div>
+        </div>
+    
+                </div>
+            </div>
+        </div>
+    
+                    </div>
+                </div>
+            </div>
+        
+            <div class="card mb-4">
+                <div class="card-header" data-toggle="collapse" data-target="#cenario_801940c0-e851-431d-9cf7-66f4e3be759d">
+                    <div class="row">
+                        <div class="col-8">
+                            <h5 class="mb-0">
+                                <i class="fas fa-caret-right mr-2"></i> 
+                                <i class="text-danger fas fa-times-circle"></i>
+                                Third scenario
+                            </h5>
+                        </div>
+                        <div class="col-4">
+                            <h6 class="mb-0 d-flex justify-content-end align-items-center">
+                                00:00.000
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div id="cenario_801940c0-e851-431d-9cf7-66f4e3be759d" class="collapse">
+                    <div class="card-body">
+        
+        <div class="card mb-3">
+            <div class="card-header" data-toggle="collapse" data-target="#test_case_364b9b1e-29cf-476b-bf6b-5f274f097fd8">
+                <div class="row">
+                    <div class="col-8">
+                        <h6 class="mb-0 d-flex justify-content-start align-items-center">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            <span class="ml-2">First test case</span>
+                        </h6>
+                    </div>
+                    <div class="col-4">
+                        <h6 class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div id="test_case_364b9b1e-29cf-476b-bf6b-5f274f097fd8" class="collapse">
+                <div class="card-body">
+    
+        <div class="card mb-2">
+            <div class="card-header" data-toggle="collapse" data-target="#step_bb5bd43b-4b97-47ef-8301-9c9ea96eb0b8">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            First step
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="step_bb5bd43b-4b97-47ef-8301-9c9ea96eb0b8" class="collapse">
+                <div class="card-body">
+                        <h6 class="mb-0 d-flex align-items-center">
+                            This is the first step in the test case.
+                        </h6>
+                    
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-2">
+            <div class="card-header" data-toggle="collapse" data-target="#step_e6296808-87f4-4dbc-8ff4-1dce48975a18">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            Second step
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="step_e6296808-87f4-4dbc-8ff4-1dce48975a18" class="collapse">
+                <div class="card-body">
+                        <h6 class="mb-0 d-flex align-items-center">
+                            This is the second step in the test case.
+                        </h6>
+                    
+                </div>
+            </div>
+        </div>
+    
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-3">
+            <div class="card-header" data-toggle="collapse" data-target="#test_case_3e4ddaaa-2e7a-4208-b7b5-c46a191660d8">
+                <div class="row">
+                    <div class="col-8">
+                        <h6 class="mb-0 d-flex justify-content-start align-items-center">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            <span class="ml-2">Second test case</span>
+                        </h6>
+                    </div>
+                    <div class="col-4">
+                        <h6 class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div id="test_case_3e4ddaaa-2e7a-4208-b7b5-c46a191660d8" class="collapse">
+                <div class="card-body">
+    
+        <div class="card mb-2">
+            <div class="card-header" data-toggle="collapse" data-target="#step_e89f89d5-9b66-440e-82b5-9b3194d75ec1">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            First step
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="step_e89f89d5-9b66-440e-82b5-9b3194d75ec1" class="collapse">
+                <div class="card-body">
+                        <h6 class="mb-0 d-flex align-items-center">
+                            This is the first step in the test case.
+                        </h6>
+                    
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-2">
+            <div class="card-header" data-toggle="collapse" data-target="#step_8eec7ea4-ab48-41cb-ae00-84469a214b8d">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            Second step
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="step_8eec7ea4-ab48-41cb-ae00-84469a214b8d" class="collapse">
+                <div class="card-body">
+                        <h6 class="mb-0 d-flex align-items-center">
+                            This is the second step in the test case.
+                        </h6>
+                    
+                </div>
+            </div>
+        </div>
+    
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-3">
+            <div class="card-header" data-toggle="collapse" data-target="#test_case_994c2456-0309-4a4a-ac03-94c8827dddb3">
+                <div class="row">
+                    <div class="col-8">
+                        <h6 class="mb-0 d-flex justify-content-start align-items-center">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-danger fas fa-times-circle"></i>
+                            <span class="ml-2">Third test case</span>
+                        </h6>
+                    </div>
+                    <div class="col-4">
+                        <h6 class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div id="test_case_994c2456-0309-4a4a-ac03-94c8827dddb3" class="collapse">
+                <div class="card-body">
+    
+        <div class="card mb-2">
+            <div class="card-header" data-toggle="collapse" data-target="#step_90672e21-1944-4e62-a999-b9c40d7794c4">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            First step
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="step_90672e21-1944-4e62-a999-b9c40d7794c4" class="collapse">
+                <div class="card-body">
+                        <h6 class="mb-0 d-flex align-items-center">
+                            This is the first step in the test case.
+                        </h6>
+                    
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-2">
+            <div class="card-header" data-toggle="collapse" data-target="#step_d925229a-33ab-4782-823a-a03b4eb5461e">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-success fas fa-check-circle"></i>
+                            Second step
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="step_d925229a-33ab-4782-823a-a03b4eb5461e" class="collapse">
+                <div class="card-body">
+                        <h6 class="mb-0 d-flex align-items-center">
+                            This is the second step in the test case.
+                        </h6>
+                    
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-2">
+            <div class="card-header" data-toggle="collapse" data-target="#step_e5685385-bcc4-4589-8a07-65a7008ebff6">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="mb-0">
+                            <i class="fas fa-caret-right mr-2"></i>
+                            <i class="text-danger fas fa-times-circle"></i>
+                            Third step
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="mb-0 d-flex justify-content-end align-items-center">
+                            00:00.000
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="step_e5685385-bcc4-4589-8a07-65a7008ebff6" class="collapse">
+                <div class="card-body">
+                        <h6 class="mb-0 d-flex align-items-center">
+                            Error executing 'Third step': Force the test to fail.
+                        </h6>
+                    
+                </div>
+            </div>
+        </div>
+    
+                </div>
+            </div>
+        </div>
+    
+                    </div>
+                </div>
+            </div>
+        
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>
+    
