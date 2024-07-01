@@ -21,7 +21,7 @@ The library includes several decorators to enhance your test cases and generate 
 - @Scenario: Defines a scenario that includes one or more test cases.
 - @GenerateReport: Generates a test report after the tests are executed.
 - @SetupReport: Sets up the report configuration before executing the tests.
-- @GetScreenshot:
+- @GetScreenshot: Sets the configuration of how you will take the screenshot.
 
 ### Example 🌟
 Here's an example of how to use the test_report library with unittest:
