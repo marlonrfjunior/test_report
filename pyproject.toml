@@ -1,6 +1,6 @@
 [project]
-name = "test_report"
-version = "0.1.4"
+name = "test_report_generator"
+version = "0.1.5"
 authors = [
   { name="Marlon Junior", email="marlonrfjunior@gmail.com" },
 ]

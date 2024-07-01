@@ -1,15 +1,15 @@
-# Test Report Library 
+# Test Report Generator Library 
 
 ## Overview 
 
-The `test_report` library is designed to facilitate the creation of automated test reports. It provides decorators for defining steps, test cases, scenarios, and generating reports.
+The `test_report_generator` library is designed to facilitate the creation of automated test reports. It provides decorators for defining steps, test cases, scenarios, and generating reports.
 
 ## Installation 🚀
 
-To install the `test_report` library, use the following command:
+To install the `test_report_generator` library, use the following command:
 
 ```bash
-pip install test_report
+pip install test_report_generator
 ```
 ## Usage 🛠️
 
